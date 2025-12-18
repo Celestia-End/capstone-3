@@ -1,4 +1,4 @@
-# Capstone 3 – EasyShop (Backend + Frontend)
+# Capstone 3 – Video Game Store (Backend + Frontend)
 
 This project contains a Java Spring Boot backend and a static HTML/CSS/JavaScript frontend.
 

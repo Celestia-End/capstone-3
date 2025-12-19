@@ -112,7 +112,9 @@ Check the Run tool window for any startup errors (for example, database connecti
 
 2. Right-click `index.html` → **Open in Browser** → choose your browser.
 
-3. Alternatively, you can locate `frontend-ui/index.html` in Finder / File Explorer and double-click it to open it in a browser.
+![image alt](https://github.com/Celestia-End/capstone-3/blob/d1d3850ad9dc9a4a71ebe4bc303f8f8de8cd8b1a/Screenshot%202025-12-19%20114020.png)   
+
+4. Alternatively, you can locate `frontend-ui/index.html` in Finder / File Explorer and double-click it to open it in a browser.
 
 ---
 

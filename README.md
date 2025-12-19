@@ -138,3 +138,4 @@ Check the Run tool window for any startup errors (for example, database connecti
   frontend-ui/js/
   frontend-ui/images/
   ```
+## App Screenshots

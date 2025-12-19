@@ -139,3 +139,5 @@ Check the Run tool window for any startup errors (for example, database connecti
   frontend-ui/images/
   ```
 ## App Screenshots
+
+1[image alt](https://github.com/Celestia-End/capstone-3/blob/6702bf2b6ffc2d8d8d3a522fb9853e417731bbfe/Screenshot%202025-12-19%20110226.png)

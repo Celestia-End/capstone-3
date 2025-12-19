@@ -51,10 +51,8 @@ public class ShoppingCartController
             // find database user by userId
             int userId = user.getId();
 
-            ShoppingCart cart = shoppingCartDao.getByUserId(user.getId());
-
             // use the shoppingCartDao to get all items in the cart and return the cart
-            return cart;
+            return shoppingCartDao.getByUserId(user.getId());
         }
         catch(Exception e)
         {
@@ -64,53 +62,15 @@ public class ShoppingCartController
 
     // add a POST method to add a product to the cart - the url should be
     // https://localhost:8080/cart/products/15 (15 is the productId to be added
-    @PostMapping("/products/{productId}")
-    @ResponseStatus(value = HttpStatus.CREATED)
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
-    public ShoppingCart addItem(@PathVariable int productId, Principal principal) {
-        String userName = principal.getName();
 
-        User user = userDao.getByUserName(userName);
-
-        Product product = productDao.getById(productId);
-
-        ShoppingCartItem item = new ShoppingCartItem();
-
-        item.setProduct(product);
-
-        return shoppingCartDao.addShoppingCartItem(item,user);
-    }
 
     // add a PUT method to update an existing product in the cart - the url should be
     // https://localhost:8080/cart/products/15 (15 is the productId to be updated)
     // the BODY should be a ShoppingCartItem - quantity is the only value that will be updated
-    @PutMapping("/products/{productId}")
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
-    public ShoppingCart updateCart(@PathVariable int productId, @RequestBody ShoppingCartItem cartItem, Principal principal) {
-        String userName = principal.getName();
 
-        User user = userDao.getByUserName(userName);
-
-        Product product = productDao.getById(productId);
-
-        cartItem.setProduct(product);
-
-        shoppingCartDao.addShoppingCartItem(cartItem, user);
-
-        return shoppingCartDao.getByUserId(user.getId());
-    }
 
     // add a DELETE method to clear all products from the current users cart
     // https://localhost:8080/cart
-    @DeleteMapping("")
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
-    public void clearCart(Principal principal)
-    {
-        String userName = principal.getName();
 
-        User user = userDao.getByUserName(userName);
-
-        shoppingCartDao.clearCart(user);
-    }
 
 }

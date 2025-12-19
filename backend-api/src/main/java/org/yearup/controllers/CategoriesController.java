@@ -17,7 +17,6 @@ import java.util.List;
     // http://localhost:8080/categories
 // add annotation to allow cross site origin requests
 @RestController
-@RequestMapping("/categories")
 @CrossOrigin
 
 public class CategoriesController
@@ -56,7 +55,7 @@ public class CategoriesController
 
     // the url to return all products in category 1 would look like this
     // https://localhost:8080/categories/1/products
-    @GetMapping("categories/{categoryId}/products")
+    @GetMapping("/categories/{categoryId}/products")
     @ResponseStatus (value = HttpStatus.OK)
     public List<Product> getProductsById(@PathVariable int categoryId)
     {
@@ -68,6 +67,7 @@ public class CategoriesController
     // add annotation to ensure that only an ADMIN can call this function
     @PreAuthorize("hasRole('Admin')")
     @RequestMapping(path = "/categories", method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.CREATED)
     public Category addCategory(@RequestBody Category category)
     {
         // insert the category
@@ -78,6 +78,7 @@ public class CategoriesController
     // add annotation to ensure that only an ADMIN can call this function
     @PreAuthorize("hasRole('Admin')")
     @RequestMapping(path = "/categories/{id}", method = RequestMethod.PUT)
+    @ResponseStatus(value = HttpStatus.OK)
     public void updateCategory(@PathVariable int id, @RequestBody Category category)
     {
         // update the category by id
@@ -87,9 +88,9 @@ public class CategoriesController
 
     // add annotation to call this method for a DELETE action - the url path must include the categoryId
     // add annotation to ensure that only an ADMIN can call this function
-    @DeleteMapping("/categories/{id}")
     @PreAuthorize("hasRole('Admin')")
     @RequestMapping(path = "/categories/{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void deleteCategory(@PathVariable int id)
     {
         // delete the category by id
